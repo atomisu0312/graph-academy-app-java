@@ -13,3 +13,6 @@ cp src/main/resources/example.properties src/main/resources/application.properti
 ```
 mvn compile exec:java
 ```
+
+4. application.propertiesの編集
+- https://graphacademy.neo4j.com/courses/app-java/0-setup/2-sandbox/を参照
