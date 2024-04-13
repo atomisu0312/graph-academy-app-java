@@ -17,9 +17,6 @@ import java.util.function.Function;
 import javax.servlet.http.HttpServletRequest;
 
 public class AppUtils {
-    static String username = "neo4j";
-    static String password = "letmein!";
-
     public static void loadProperties() {
         try {
             var file = AppUtils.class.getResourceAsStream("/application.properties");
