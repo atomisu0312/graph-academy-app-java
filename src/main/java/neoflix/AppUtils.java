@@ -17,9 +17,6 @@ import java.util.function.Function;
 import javax.servlet.http.HttpServletRequest;
 
 public class AppUtils {
-    static String username = "neo4j";
-    static String password = "letmein!";
-
     public static void loadProperties() {
         try {
             var file = AppUtils.class.getResourceAsStream("/application.properties");
@@ -48,8 +45,9 @@ public class AppUtils {
 
     // tag::initDriver[]
     static Driver initDriver() {
-        // TODO: Create and assign an instance of the driver here
-        return null;
+        // Create and assign an instance of the driver here
+        return GraphDatabase.driver(getNeo4jUri(),
+        AuthTokens.basic(getNeo4jUsername(), getNeo4jPassword()));
     }
     // end::initDriver[]
 
@@ -61,13 +59,16 @@ public class AppUtils {
         return System.getProperty("JWT_SECRET");
     }
 
-    static String getNeo4jUri() {
+    public static String getNeo4jUri() {
+        loadProperties();
         return System.getProperty("NEO4J_URI");
     }
-    static String getNeo4jUsername() {
+    public static String getNeo4jUsername() {
+        loadProperties();
         return System.getProperty("NEO4J_USERNAME");
     }
-    static String getNeo4jPassword() {
+    public static String getNeo4jPassword() {
+        loadProperties();
         return System.getProperty("NEO4J_PASSWORD");
     }
 
